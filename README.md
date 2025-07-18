@@ -23,9 +23,6 @@ circonomit-challenge/
 ├── Task4_ProductUX/
 │   └── README.md        # Product thinking and user interface design
 │
-├── Bonus_Visualization/
-│   └── README.md        # Visualizing model structure, feedback loops, sensitivity
-│
 └── README.md            # Main documentation
 ```
 
