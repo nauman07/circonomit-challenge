@@ -127,3 +127,20 @@ This model extension enables:
 - Deterministic evaluation via DAG
 - Handling of feedback loops
 - Scenario traceability and reproducibility
+
+---
+
+## 🗃️ Project Structure (Python Prototype)
+A minimal working prototype is available in this folder. It includes:
+
+```
+Task1_ExtendDataModel/
+├── main.py           # Entry point to run a simulation scenario
+├── model.py          # Defines data structures: Block, Attribute, Scenario
+├── engine.py         # Builds the dependency graph and runs calculations
+├── scenarios.py      # Contains example override scenarios
+├── Explanation.md    # Explanation file for how the program works and how to use it.
+└── README.md         # This documentation
+```
+
+You can run `main.py` to simulate a predefined scenario with overridden inputs and observe how calculated attributes are resolved.
