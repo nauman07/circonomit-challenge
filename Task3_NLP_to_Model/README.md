@@ -3,7 +3,7 @@
 
 ## 🧠 Goal
 
-Design a system that takes natural language input (e.g. documents, chat messages, etc.) and extracts structured knowledge that can be translated into simulation-ready models made of:
+Design a system that takes natural language input e.g., documents, chat messages, etc. and extracts structured knowledge that can be translated into simulation-ready models made of:
 - Blocks
 - Attributes (input / calculated)
 - Relationships (dependencies)
@@ -28,9 +28,9 @@ Design a system that takes natural language input (e.g. documents, chat messages
    - Extract formulas and dependencies.
 
 4. **Mapping to Model**
-   - Attributes are added into appropriate Blocks.
+   - Attributes are added to appropriate Blocks.
    - Dependencies form edges in the calculation graph.
-   - Output can be JSON or Python structure.
+   - Output can be JSON or a Python structure.
 
 ---
 
@@ -42,7 +42,7 @@ Task3_NLPtoModel/
 ├── nlp_engine.py     # Extracts attributes, formulas, and structure from text
 ├── parser_utils.py   # Helper functions for tokenizing, NER, pattern matching
 ├── sample_input.txt  # Example sentence/document input
-├── explaination.md   # Layman's explanation of this approach
+├── explanation.md   # Layman's explanation of this approach
 └── README.md         # This documentation
 ```
 
@@ -74,4 +74,5 @@ Task3_NLPtoModel/
 ## 🚀 Next Steps
 
 - Add `main.py` to run a demo extraction
-- Build minimal NLP parser for structured model creation
+- Build a minimal NLP parser for structured model creation
+- A whole LLM model tailored for a specific purpose can be designed using Models like GPT, LLAMA, etc.
