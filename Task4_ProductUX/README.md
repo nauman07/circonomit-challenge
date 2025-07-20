@@ -36,7 +36,7 @@ Design an intuitive interface that enables **non-technical users** to:
 
 ---
 
-## 💡 Wireframe Concepts (Suggested Views)
+## Suggested Views
 
 ### 1. Model Editor
 - Drag & drop interface to define Blocks and Attributes
@@ -55,7 +55,7 @@ Design an intuitive interface that enables **non-technical users** to:
 
 ### 4. Sensitivity Analyzer
 - Sliders for input attributes
-- Output charts updating in real-time
+- Output charts are updating in real-time
 - Tornado chart for impact comparison
 
 ---
@@ -79,5 +79,3 @@ Task4_ProductUX/
 ├── explaination.md         # Layman explanation of design philosophy
 └── README.md               # This documentation
 ```
-
-Next step: generate `explaination.md` for product vision.
