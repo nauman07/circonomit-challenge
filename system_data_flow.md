@@ -83,16 +83,16 @@ This flow describes how data moves through the Circonomit system architecture—
 [User Input]
      |
      v
-[NLP Parser (Task 3)]
+[NLP Parser]
      |
      v
 [Structured Model (Blocks + Attributes)]
      |                          |
      |                          v
-     |               [Scenario Overrides (Task 1)]
+     |               [Scenario Overrides]
      |                          |
      |                          v
-     +------------------>[Calculation Engine (Task 2)]
+     +------------------>[Calculation Engine]
                                 |
                                 v
                     [Execution DAG & Caching]
@@ -101,5 +101,5 @@ This flow describes how data moves through the Circonomit system architecture—
                        [Simulation Results]
                                 |
                                 v
-                   [Visualization Layer (Task 4)]
+                   [Visualization Layer]
 ```
