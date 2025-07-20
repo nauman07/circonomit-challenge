@@ -1,93 +1,62 @@
+
 # Task 2: Execution & Caching Strategy
 
-## 🎯 Goal
-Design an efficient and scalable computation layer for evaluating models defined as Blocks and Attributes. The system should:
-- Execute calculations based on dependencies
-- Cache intermediate results
-- Enable parallelization where possible
+## 🔍 Objective
+
+Design an efficient approach to run simulations by:
+- Executing calculated attributes in the right order
+- Avoiding unnecessary recalculations
+- Supporting parallelism where possible
 
 ---
 
-## 🧱 Assumptions
-- Each **calculated attribute** depends on zero or more other attributes
-- Input values may be overridden by a **scenario**
-- A **directed acyclic graph (DAG)** represents dependencies
+## 🧠 Strategy
+
+### 1. **Execution Layer**
+All execution logic is handled in Python. In real systems, this could be moved to a microservice or database layer.
+
+### 2. **Caching Intermediate Results**
+- Cache attribute values after computation.
+- Use a simple in-memory cache (dictionary) during evaluation.
+- Only recompute if dependencies have changed.
+
+### 3. **Topological Sort**
+- We use a directed acyclic graph (DAG) to determine the execution order.
+- Each node is a calculated attribute.
+- Dependencies form directed edges.
+
+### 4. **Parallel Execution**
+- Attributes that do not depend on each other can be computed in parallel.
+- We use Python’s `concurrent.futures.ThreadPoolExecutor` to parallelize groups of independent nodes.
 
 ---
 
-## ⚙️ Computation Stack Design
+## 🗂️ Project Structure
 
-### 📍 Where Should Computation Happen?
-**Primary choice:** Application Layer (Python engine)
-
-**Why?**
-- Easier to manipulate DAGs, run custom logic, and perform iterative convergence
-- Enables tight integration with both frontend (user inputs) and backend (data sources)
-
-**Secondary options:**
-- For large-scale workloads: offload to a distributed engine (e.g., Dask, Ray)
-- For persisted results: store derived outputs in a database or cache (e.g., Redis, PostgreSQL)
-
----
-
-## 🔄 Caching Strategy
-
-### What to Cache?
-- **Intermediate results** of calculated attributes
-- Cache at **attribute level**, using a hash of:
-  - Formula string
-  - Input values (from scenario)
-
-### How to Cache?
-- In-memory cache (e.g., Python `functools.lru_cache`, or Redis for cross-session caching)
-- Cache key = hash(attribute_id + formula + input values)
-- Use `dirty flags` or dependency graph versioning to invalidate affected nodes only
-
----
-
-## ⚡ Parallelization Strategy
-
-### Execution Plan:
-- Perform a **topological sort** of the DAG
-- Identify **independent nodes** (same level in the DAG)
-- Use a **task queue** (e.g., `concurrent.futures.ThreadPoolExecutor`) to evaluate independent attributes in parallel
-
-### Example:
 ```
-     A
-    / \
-   B   C
-    \ /
-     D
+Task2_ExecutionCaching/
+├── main.py         # Entry point: builds model, evaluates with caching
+├── model.py        # Basic model for attributes/blocks
+├── executor.py     # DAG traversal + execution with parallelism and cache
+├── scenarios.py    # Sample override scenarios
+└── explaination.md # Layman explanation of strategy
 ```
-- A → level 0 (input)
-- B, C → level 1 (can be computed in parallel)
-- D → level 2 (depends on B, C)
 
 ---
 
-## 🧪 Iterative Evaluation (Feedback Loops)
-- Identify cycles in the DAG
-- For any **iterative block**:
-  - Run recalculations until **value change < ε** or max iterations reached
-- Store convergence metadata per node (delta, iteration count)
+## 🚀 How to Run
+
+```bash
+python main.py
+```
+
+The simulation applies a scenario, executes attributes in topological order, and caches results.
 
 ---
 
-## 🛠️ Tooling Suggestion
-- Language: Python
-- Graph lib: `networkx`
-- Caching: `functools.lru_cache` (local), Redis (shared)
-- Parallelism: `ThreadPoolExecutor`, `asyncio`, or Dask for scalability
+## ✅ Features
 
----
-
-## ✅ Summary
-| Component | Strategy |
-|----------|----------|
-| Computation | Application layer (Python), with DAG execution |
-| Caching | Attribute-level, hash-based cache keys |
-| Parallelism | Topo-sorted layers → parallel execution of independent nodes |
-| Feedback loops | Fixed-point iteration with convergence checks |
-
-This strategy balances performance, transparency, and correctness. It scales well from single-scenario runs to large batch simulations.
+- DAG-based dependency tracking
+- Automatic execution order
+- In-memory caching
+- Support for multithreaded parallelism
