@@ -24,6 +24,8 @@ circonomit-challenge/
 │   └── README.md        # Product thinking and user interface design
 │
 └── README.md            # Main documentation
+│
+└── system_data_flow.md  # Flow Diagram of how the solution is working from input to output.
 ```
 
 ---
