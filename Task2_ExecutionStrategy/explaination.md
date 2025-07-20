@@ -1,9 +1,9 @@
 
-# 🧠 Explanation: Execution & Caching Strategy (Layman Terms)
+# 🧠 Explanation: Execution & Caching Strategy
 
 ## 🧩 What Problem Are We Solving?
 
-Imagine you want to test a business decision like "What happens if energy prices rise?". Our system can calculate new outcomes (like total costs) based on this change. But some of these values depend on others—so we must compute them in the right order, and efficiently.
+If STK wants to test a business choice, like "What happens if energy prices go up?" With this change, our system can figure out new results, such as total costs. But some of these numbers depend on others, so we need to figure them out in the right order and quickly.
 
 ---
 
@@ -23,14 +23,14 @@ We build a graph that shows what depends on what.
 ### Step 2: Sort Them in the Right Order
 We use a method called **topological sort** to decide the correct order:
 - First: calculate things that don’t depend on anything (inputs)
-- Then: one-by-one, calculate the values that depend on those
+- Then, one by one, calculate the values that depend on those
 
 ---
 
 ### Step 3: Cache What You Already Know
 To avoid repeating calculations:
-- We store each computed value in a cache (memory)
-- If the same value is needed again, we just read it from cache
+- We store each computed value in a cache memory
+- If the same value is needed again, we just read it from the cache
 
 ---
 
