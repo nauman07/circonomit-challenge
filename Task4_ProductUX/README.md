@@ -70,12 +70,3 @@ We suggest using:
 - Hover/click to see formulas and data lineage
 
 ---
-
-## 📁 Folder Structure
-
-```
-Task4_ProductUX/
-├── wireframes/             # Sketches or mockups (PNG/SVG optional)
-├── explaination.md         # Layman explanation of design philosophy
-└── README.md               # This documentation
-```
