@@ -30,7 +30,7 @@ circonomit-challenge/
 
 ## Understanding STK's Modeling Approach
 
-Circonomit's system can be understood as a two-layered decision infrastructure:
+STK's system can be understood as a two-layered decision infrastructure:
 
 ### 1. **Computation Layer**
 - Responsible for evaluating the numerical and logical dependencies between variables.
