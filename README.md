@@ -12,7 +12,7 @@ There are four tasks and one bonus question in the challenge. There is a folder 
 circonomit-challenge/
 │
 ├── Task1_ExtendDataModel/
-│   └── README.md        # Data model extension for scenario-based simulation
+│   └── README.md        # Data model extension for scenario based simulation
 │
 ├── Task2_ExecutionStrategy/
 │   └── README.md        # Strategy for computation orchestration, caching, parallelism
@@ -28,7 +28,7 @@ circonomit-challenge/
 
 ---
 
-## Understanding Circonomit's Modeling Approach
+## Understanding STK's Modeling Approach
 
 Circonomit's system can be understood as a two-layered decision infrastructure:
 
@@ -58,6 +58,5 @@ Circonomit's system can be understood as a two-layered decision infrastructure:
   - Task 2 defines the execution strategy
   - Task 3 explores the NLP interface to feed into Task 1
   - Task 4 focuses on making the system usable by business users
-  - Bonus adds advanced visualization of interdependencies
 
 ---
