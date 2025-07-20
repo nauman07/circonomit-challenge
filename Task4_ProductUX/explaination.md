@@ -4,11 +4,10 @@
 ## What Are We Building?
 
 We're building a **simulation platform** for non-technical users.  
-Think of it like Excel — but smarter, visual, and way easier to use.
 
 Users want to:
-- Enter or override data (like energy prices or labor hours)
-- Get insights and totals (like total cost)
+- Enter or override data like energy prices or labor hours
+- Get insights and totals like total cost
 - Understand why things changed
 - See how changes affect other areas
 
@@ -17,7 +16,7 @@ Users want to:
 ## Our Design Philosophy
 
 ### 1. Keep It Simple
-- Speak the user’s language — not technical formulas.
+- Speak the user’s language, not technical formulas.
 - Use tooltips and guided flows to onboard new users.
 
 ### 2. Guide the User
