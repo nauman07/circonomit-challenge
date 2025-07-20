@@ -79,3 +79,27 @@ This flow describes how data moves through the Circonomit system architecture—
 | 8 | Task 4 | Present results with clarity and impact |
 
 ---
+```
+[User Input]
+     |
+     v
+[NLP Parser (Task 3)]
+     |
+     v
+[Structured Model (Blocks + Attributes)]
+     |                          |
+     |                          v
+     |               [Scenario Overrides (Task 1)]
+     |                          |
+     |                          v
+     +------------------>[Calculation Engine (Task 2)]
+                                |
+                                v
+                    [Execution DAG & Caching]
+                                |
+                                v
+                       [Simulation Results]
+                                |
+                                v
+                   [Visualization Layer (Task 4)]
+```
