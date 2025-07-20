@@ -79,5 +79,3 @@ This flow describes how data moves through the Circonomit system architecture—
 | 8 | Task 4 | Present results with clarity and impact |
 
 ---
-
-This markdown flow allows both technical and non-technical stakeholders to understand how the system turns raw input into intelligent insights.
