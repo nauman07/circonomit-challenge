@@ -54,7 +54,7 @@ Example Output:
 
 ---
 
-## Why It’s Powerful
+## Why NLM.
 
 With this translation layer:
 - Users don’t need to code models manually
