@@ -1,8 +1,8 @@
 # Circonomit Hiring Challenge Repository
 
-This repository contains my solutions to the Circonomit hiring challenge. The challenge is structured around building a modular simulation framework inspired by Circonomit's mission: enabling businesses to reason about decisions beyond just financial outcomes, including systemic dependencies, constraints, and second-order effects.
+My answers to the Circonomit hiring challenge are in this repository. The goal of the challenge is to create a modular simulation framework based on Circonomit's mission, which is to help businesses think about decisions in terms of more than just financial outcomes, such as systemic dependencies, constraints, and second-order effects.
 
-The challenge consists of four tasks and one bonus question. Each task is represented in its own folder, and each folder contains a `README.md` that explains the task-specific solution.
+There are four tasks and one bonus question in the challenge. There is a folder for each task, and each folder has a README.md file that explains how to do the task.
 
 ---
 
