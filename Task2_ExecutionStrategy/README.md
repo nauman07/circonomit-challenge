@@ -3,11 +3,7 @@
 
 ## 🔍 Objective
 
-Design an efficient approach to run simulations by:
-- Executing calculated attributes in the right order
-- Avoiding unnecessary recalculations
-- Supporting parallelism where possible
-
+To run simulations efficiently, you should: - Run calculated attributes in the right order - Avoid recalculating things that don't need to be recalculated - Support parallelism when you can.
 ---
 
 ## 🧠 Strategy
@@ -17,7 +13,7 @@ All execution logic is handled in Python. In real systems, this could be moved t
 
 ### 2. **Caching Intermediate Results**
 - Cache attribute values after computation.
-- Use a simple in-memory cache (dictionary) during evaluation.
+- Use a simple in-memory cache dictionary during evaluation.
 - Only recompute if dependencies have changed.
 
 ### 3. **Topological Sort**
@@ -28,6 +24,7 @@ All execution logic is handled in Python. In real systems, this could be moved t
 ### 4. **Parallel Execution**
 - Attributes that do not depend on each other can be computed in parallel.
 - We use Python’s `concurrent.futures.ThreadPoolExecutor` to parallelize groups of independent nodes.
+- If the calculation is done in Big Data, we can divide it into chunks and use a cluster like Spark or Hadoop to parallelize the calculation.
 
 ---
 
