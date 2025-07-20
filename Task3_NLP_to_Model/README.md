@@ -1,82 +1,77 @@
-# Task 3: Natural Language to Model
 
-## 🎯 Objective
-Design an approach to convert human language (text, chat, or spoken input) into a structured data model composed of:
-- **Blocks**
-- **Attributes** (input or calculated)
-- **Relationships** (formulas, dependencies)
+# Task 3: From Natural Language to Model
 
----
+## 🧠 Goal
 
-## 🧠 Key Challenges
-- Identify relevant business terms and concepts
-- Disambiguate vague statements
-- Map language constructs to formal structures (variables, logic)
+Design a system that takes natural language input (e.g. documents, chat messages, etc.) and extracts structured knowledge that can be translated into simulation-ready models made of:
+- Blocks
+- Attributes (input / calculated)
+- Relationships (dependencies)
 
 ---
 
-## 🧱 Proposed Pipeline Architecture
+## 🛠️ Strategy Overview
 
-### Step 1: **Preprocessing**
-- Clean text (remove noise, normalize units)
-- Segment into meaningful instructions/statements
+1. **Text Ingestion**
+   - Input comes from chat, documents, or audio (transcribed).
+   - Example: "The energy cost is calculated by multiplying the price per kWh and the total kWh used."
 
-### Step 2: **Entity Extraction**
-Use Named Entity Recognition (NER) or LLM prompt-based techniques to extract:
-- Domain-specific terms (e.g., `energy price`, `shift hours`)
-- Logical structures (e.g., “if... then...”, “depends on”, “is calculated as”)
-- Units, thresholds, conditions
+2. **NLP Processing**
+   - Sentence parsing: extract nouns and verbs.
+   - Named Entity Recognition: identify potential variables and units.
+   - Dependency analysis: find relationships (formulas and calculation flows).
 
-### Step 3: **Classification & Typing**
-- Classify extracted terms as:
-  - **Block** (group/category)
-  - **Attribute** (within block)
-  - **Relationship** (formula or dependency)
-- Determine type: `input` or `calculated`
+3. **Knowledge Extraction**
+   - Extract attributes and classify them:
+     - Inputs: direct user-provided numbers
+     - Calculated: inferred from verbs (e.g. multiply, add, subtract)
+   - Extract formulas and dependencies.
 
-### Step 4: **Mapping to Model Format**
-Generate formal structures:
+4. **Mapping to Model**
+   - Attributes are added into appropriate Blocks.
+   - Dependencies form edges in the calculation graph.
+   - Output can be JSON or Python structure.
+
+---
+
+## 📦 Folder Structure
+
+```
+Task3_NLPtoModel/
+├── main.py           # Demo entry: simulate extraction from text
+├── nlp_engine.py     # Extracts attributes, formulas, and structure from text
+├── parser_utils.py   # Helper functions for tokenizing, NER, pattern matching
+├── sample_input.txt  # Example sentence/document input
+├── explaination.md   # Layman's explanation of this approach
+└── README.md         # This documentation
+```
+
+---
+
+## 🔍 Sample Input
+
+```
+"The energy cost is calculated by multiplying the price per kWh and the number of kilowatt-hours used. Total cost is the sum of material cost and energy cost."
+```
+
+## 🧾 Sample Output
+
 ```json
 {
-  "block": "Energy",
-  "attribute": "energy_cost",
-  "type": "calculated",
-  "formula": "price_per_kwh * usage_kwh",
-  "dependencies": ["price_per_kwh", "usage_kwh"]
+  "blocks": ["Energy", "Costs"],
+  "attributes": [
+    {"name": "energy_price_per_kwh", "type": "input"},
+    {"name": "kwh_used", "type": "input"},
+    {"name": "energy_cost", "type": "calculated", "formula": "energy_price_per_kwh * kwh_used"},
+    {"name": "material_cost", "type": "input"},
+    {"name": "total_cost", "type": "calculated", "formula": "material_cost + energy_cost"}
+  ]
 }
 ```
 
 ---
 
-## 💬 Example Input
-> "If the energy price per kWh increases above 0.25, the production should switch to night shift."
+## 🚀 Next Steps
 
-### Result:
-- Block: `Energy`, Attribute: `price_per_kwh`, Type: `input`
-- Block: `Production`, Attribute: `shift_schedule`, Type: `calculated`
-- Rule: `IF Energy.price_per_kwh > 0.25 THEN Production.shift_schedule = 'night'`
-
----
-
-## 🔧 Tools and Techniques
-| Task | Tool |
-|------|------|
-| NLP Base | spaCy / HuggingFace Transformers |
-| LLM Reasoning | OpenAI / Claude / Mistral API |
-| Mapping Rules | Custom prompt-based templates or rules engine |
-| Integration | Convert output into JSON schema for simulation engine |
-
----
-
-## 🔄 Feedback Loop
-1. Extract candidate structures
-2. Let user confirm or correct mappings (semi-automated)
-3. System learns over time (fine-tune prompts or improve rule coverage)
-
----
-
-## ✅ Summary
-This pipeline allows:
-- Extracting structured models from messy natural input
-- Connecting knowledge sources (docs, chat) to technical systems
-- Supporting non-technical users in creating simulation-ready models
+- Add `main.py` to run a demo extraction
+- Build minimal NLP parser for structured model creation

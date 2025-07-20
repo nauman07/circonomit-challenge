@@ -1,0 +1,3 @@
+
+The energy cost is calculated by multiplying the price per kWh and the number of kilowatt-hours used.
+Total cost is the sum of material cost and energy cost.
