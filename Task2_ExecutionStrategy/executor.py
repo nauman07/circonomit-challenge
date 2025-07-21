@@ -1,4 +1,3 @@
-
 from concurrent.futures import ThreadPoolExecutor
 from collections import defaultdict, deque
 
@@ -44,6 +43,19 @@ class SimulationExecutor:
             print(f"Error evaluating formula '{formula}': {e}")
             return None
 
+    def evaluate_attribute(self, full_attr_name, name_map):
+        attr = name_map[full_attr_name]
+        if attr.type == "input":
+            self.cache[full_attr_name] = attr.value
+        elif attr.type == "calculated":
+            local_env = {}
+            for dep in attr.dependencies:
+                if dep in self.cache:
+                    local_env[dep.split(".")[1]] = self.cache[dep]
+            result = self.evaluate_formula(attr.formula, local_env)
+            self.cache[full_attr_name] = result
+            attr.value = result
+
     def run_simulation(self):
         sorted_attributes = self.topological_sort()
 
@@ -53,14 +65,8 @@ class SimulationExecutor:
             for attr in block.attributes.values():
                 name_map[f"{block.name}.{attr.name}"] = attr
 
-        for full_attr_name in sorted_attributes:
-            attr = name_map[full_attr_name]
-            if attr.type == "input":
-                self.cache[full_attr_name] = attr.value
-            elif attr.type == "calculated":
-                local_env = {}
-                for dep in attr.dependencies:
-                    if dep in self.cache:
-                        local_env[dep.split(".")[1]] = self.cache[dep]
-                attr.value = self.evaluate_formula(attr.formula, local_env)
-                self.cache[full_attr_name] = attr.value
+        with ThreadPoolExecutor() as executor:
+            futures = [executor.submit(self.evaluate_attribute, full_attr_name, name_map)
+                       for full_attr_name in sorted_attributes]
+            for future in futures:
+                future.result()  # Wait for all to complete
