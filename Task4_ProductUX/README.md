@@ -1,5 +1,5 @@
 
-# Task 4: Product Thinking & Usability (Updated)
+# Task 4: Product Thinking & Usability
 
 ## 🧠 Objective
 
