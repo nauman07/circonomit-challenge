@@ -29,7 +29,7 @@ Users want to:
 ### 3. Visual Thinking
 - Show graphs, charts, and flows instead of tables
 - Color-coded nodes for different attribute types
-- Sliders for tweaking input values and instantly seeing effects
+- The user can tweak input values and instantly see effects
 
 ---
 
@@ -53,6 +53,7 @@ We show a **graph** with arrows:
 - Inputs in blue
 - Calculated values in green
 - Arrows show how each value flows into the next
+- Filters of what output the user wants to see, probably? Let's say we provide users with scenario analysis for multiple dependents, such as prices and CO2 emissions, and the user may not always be interested in all of them. So, putting checkboxes of which outputs the user wants to see can make it customized as per user preferences
 
 Hovering shows:
 - Description
