@@ -23,9 +23,11 @@ circonomit-challenge/
 ├── Task4_ProductUX/
 │   └── README.md        # Product thinking and user interface design
 │
+└── Flow.png             # Flow Diagram of how the solution is working from input to output.
+│
 └── README.md            # Main documentation
 │
-└── system_data_flow.md  # Flow Diagram of how the solution is working from input to output.
+└── system_data_flow.md  # Flow of how the solution is working from input to output.
 ```
 
 ---
