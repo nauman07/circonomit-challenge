@@ -19,8 +19,8 @@ Nauman opens the “Model Builder” and defines a few blocks:
 
 ### Step 2: Setup Scenario
 Nauman opens the “Scenario Playground”:
-- She sets `energy_price_per_kwh = 0.22` and `kwh_used = 1200`
-- She clicks “Run Simulation”
+- He sets `energy_price_per_kwh = 0.22` and `kwh_used = 1200`
+- He clicks “Run Simulation”
 
 ---
 
