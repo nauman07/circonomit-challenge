@@ -80,5 +80,5 @@ This flow describes how data moves through the Circonomit system architecture—
 
 ---
 ```
-![alt text](Flow.png "Title")
+![Alt text](https://github.com/nauman07/circonomit-challenge/blob/main/Flow.png "Title")
 ```
